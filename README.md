@@ -57,3 +57,25 @@ IMPORTANT - You will now need to pass the --legacy-peer-deps flag to every npm i
 
 You may have to install prettier as well:
 npm install prettier @types/prettier --legacy-peer-deps
+
+###important
+Find the package.json file of your jbook project and edit the entry for react-scripts to be 4.0.1:
+
+    "react-scripts": "4.0.1",
+
+An additional change is required to the start script as Node LTS is now on the 18 version.
+
+    "start": "react-scripts --openssl-legacy-provider start",
+
+If you do not make this change, then, you will see a "digital envelope routines::unsupported" error.
+
+Then, in the root of your project directory, run the following in your terminal:
+
+rm package-lock.json 
+windows: del package-lock.json
+
+rm -r node_modules 
+windows: del /s /q node_modules
+rmdir /s /q node_modules
+
+npm install --legacy-peer-deps
