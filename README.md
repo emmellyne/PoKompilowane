@@ -54,3 +54,6 @@ You will need to pass the legacy-peer-deps flag to the install command:
 npm install --save-exact @monaco-editor/react@3.7.5 --legacy-peer-deps
 
 IMPORTANT - You will now need to pass the --legacy-peer-deps flag to every npm install command
+
+You may have to install prettier as well:
+npm install prettier @types/prettier --legacy-peer-deps
