@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import { useState, useEffect, useRef } from 'react';
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
+import CodeEditor from './components/code-editor';
 
 
 const App = () => {
   const ref = useRef<any>();
   const iframe = useRef<any>();
-  const [input, SetInput] = useState('');
+  const [input, setInput] = useState('');
 
 
    const startService = async () => {
@@ -68,7 +69,9 @@ const App = () => {
     `;
 
   return (<div>
-    <textarea value={input} onChange={e => SetInput(e.target.value)}>
+    <CodeEditor initialValue='const a = 1;'
+    onChange={(value) => setInput(value)}/>
+    <textarea value={input} onChange={e => setInput(e.target.value)}>
     </textarea>
       <div>
         <button onClick={onClick}>Submit</button>
