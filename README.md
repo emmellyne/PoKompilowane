@@ -71,11 +71,24 @@ If you do not make this change, then, you will see a "digital envelope routines:
 
 Then, in the root of your project directory, run the following in your terminal:
 
-rm package-lock.json 
+rm package-lock.json
 windows: del package-lock.json
 
-rm -r node_modules 
+rm -r node_modules
 windows: del /s /q node_modules
 rmdir /s /q node_modules
 
 npm install --legacy-peer-deps
+
+To install bulma.css:
+
+npm install bulmaswatch --legacy-peer-deps
+
+Need to install:
+npm install --save-exact react-resizable@3.0.4 @types/react-resizable@3.0.2 --legacy-peer-deps
+
+npm install --save-exact react-resizable@1.11.0 @types/react-resizable@1.7.2 --legacy-peer-deps
+
+npm install --save-exact @uiw/react-md-editor@2.1.1 --legacy-peer-deps
+
+npm install --save-exact react-redux redux @types/react-redux redux-thunk@2.3.0 --legacy-peer-deps
