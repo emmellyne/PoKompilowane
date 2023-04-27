@@ -13,7 +13,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  color: red;
+  color: darkred;
 }
 
 .react-draggable-transparent-selection .preview-wrapper:after {
