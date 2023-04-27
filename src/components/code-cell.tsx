@@ -3,6 +3,7 @@ import CodeEditor from './code-editor';
 import Preview from './preview';
 import bundle from '../bundler';
 import Resizable from './resizable';
+import ResizableBox from './test';
 
 const CodeCell = () => {
   const [code, setCode] = useState('');
@@ -22,17 +23,16 @@ const CodeCell = () => {
   }, [input]);
 
   return (
-    <Resizable direction='vertical'>
-      <div style={{ height:'100%', display: 'flex', flexDirection: 'row' }}>
-        <Resizable direction='horizontal'>
+    
+      <div id='horizontal-div' style={{ display: 'flex', flexDirection: 'row' }}>
+        <ResizableBox direction='horizontal'>
           <CodeEditor 
             initialValue='const a = 1;'
             onChange={(value) => setInput(value)}/>
-        </Resizable>
+        </ResizableBox>
         <Preview code={code} err={err} />
-        
       </div>
-    </Resizable>
+    
 
   );
 };
