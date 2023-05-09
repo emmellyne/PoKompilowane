@@ -11,6 +11,12 @@
   z-index: 20;
   opacity: 0;
   transition: opacity 0.3s;
+  background-color: #A1E5AB !important;
+  border-color: #A1E5AB !important;
+}
+
+.editor-wrapper .button-format:focus {
+  background-color: #A1E5AB !important;
 }
 
 .editor-wrapper:hover .button-format {

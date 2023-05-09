@@ -1,10 +1,11 @@
 import 'bulmaswatch/darkly/bulmaswatch.min.css';
+import './index.css';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store } from './state';
 import CodeCell from './components/code-cell';
 import TextEditor from './components/text-editor';
-import ResizableBox from './components/test';
+import ResizableBox from './components/code-cell';
 
 const App = () => {
   return (
@@ -16,9 +17,11 @@ const App = () => {
     </Provider>
     */
     <div>
-    <TextEditor />
-    <CodeCell />
+      <TextEditor />
+      <CodeCell />
+    
     </div>
+    
     
   );
 };

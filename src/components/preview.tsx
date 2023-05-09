@@ -1,5 +1,6 @@
 import './preview.css'
 import { useRef, useEffect } from 'react';
+import { white } from './res/colors';
 
 interface PreviewProps {
   code: string;
@@ -9,7 +10,7 @@ interface PreviewProps {
 const html = `
 <html>
   <head>
-    <style>html { background-color: white; } </style>
+    <style>html { background-color: #FAF9F6; height: 100%; } </style>
   </head>
   <body>
     <div id="root"></div>
