@@ -5,8 +5,15 @@ import CodeEditor from './code-editor';
 import Preview from './preview';
 import { theme } from "./res/colors";
 import './code-cell.css';
+import { Cell } from '../state';
+import { useActions } from "../hooks/use-actions";
+
+// interface CodeCellProps {
+//   cell: Cell
+// }
 
 interface ResizableProps {
+  cell : Cell
   children?: React.ReactNode;
 }
 
@@ -37,18 +44,19 @@ const enable_vertical: Enable = {
 
 
 
-const CodeCell: React.FC<ResizableProps> = ({ children }) => {
+const CodeCell: React.FC<ResizableProps> = ({ cell, children }) => {
   const [innerHeight, setInnerHeight] = useState(window.innerHeight);
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(window.innerWidth * 0.7);
   const [height, setHeight] = useState(window.innerHeight * 0.2);
+  
   const [code, setCode] = useState('');
   const [err, setErr] = useState('');
-  const [input, setInput] = useState('');
+  const {updateCell} = useActions();
 
   useEffect(() => {
     const timer = setTimeout(async () => {
-      const output = await bundle(input);
+      const output = await bundle(cell.content);
       setCode(output.code);
       setErr(output.err);
     }, 1000);
@@ -56,7 +64,7 @@ const CodeCell: React.FC<ResizableProps> = ({ children }) => {
     return () => {
       clearTimeout(timer);
     }
-  }, [input]);
+  }, [cell.content]);
 
   const resizableProps_horizontal: ResizableProperties = {
     className: 'resize-horizontal',
@@ -116,8 +124,8 @@ const CodeCell: React.FC<ResizableProps> = ({ children }) => {
   <Resizable {...resizableProps_vertical}>
     <Resizable {...resizableProps_horizontal}>
       <CodeEditor 
-                initialValue='const a = 1;'
-                onChange={(value) => setInput(value)}/>
+                initialValue={cell.content}
+                onChange={(value) => updateCell(cell.id, value)}/>
 
     </Resizable>
     <Preview code={code} err={err} />
