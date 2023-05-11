@@ -9,13 +9,13 @@ import ResizableBox from './components/code-cell';
 
 const App = () => {
   return (
-    /*
-    <Provider store={store}>
-      <div>
-        <TextEditor />
-      </div>
-    </Provider>
-    */
+    
+    // <Provider store={store}>
+    //   <div>
+    //     <TextEditor />
+    //   </div>
+    // </Provider>
+    
     <div>
       <TextEditor />
       <CodeCell />
