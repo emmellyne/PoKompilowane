@@ -80,7 +80,7 @@ const CodeCell: React.FC<ResizableProps> = ({ children }) => {
     minHeight: 25,
     size: {
       height,
-      width: innerWidth
+      width: innerWidth - 45
       },
     onResize: (event, direction, refToElement, delta) => {
       setHeight(refToElement.offsetHeight);
