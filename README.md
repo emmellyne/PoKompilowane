@@ -92,3 +92,5 @@ npm install --save-exact react-resizable@1.11.0 @types/react-resizable@1.7.2 --l
 npm install --save-exact @uiw/react-md-editor@2.1.1 --legacy-peer-deps
 
 npm install --save-exact react-redux redux @types/react-redux redux-thunk@2.3.0 --legacy-peer-deps
+
+npm install @fortawesome/fontawesome-free --legacy-peer-deps
