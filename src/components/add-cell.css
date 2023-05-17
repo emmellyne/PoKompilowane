@@ -19,7 +19,7 @@
   bottom: 50%;
   right: 2.5%;
   left: 2.5%;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #FAF9F6;
   width: 95%;
   z-index: -1;
 }
@@ -31,4 +31,5 @@
 
 .add-cell .add-buttons button {
   margin: 0 20px;
+  background-color: #A1E5AB;
 }

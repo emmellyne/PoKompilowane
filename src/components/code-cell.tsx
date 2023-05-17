@@ -1,12 +1,13 @@
 import { Resizable, Size, Enable, ResizableProps as ResizableProperties } from "re-resizable";
 import { useEffect, useState } from "react";
-import bundle from '../bundler';
 import CodeEditor from './code-editor';
 import Preview from './preview';
 import { theme } from "./res/colors";
 import './code-cell.css';
 import { Cell } from '../state';
 import { useActions } from "../hooks/use-actions";
+import { usedTypedSelector } from "../hooks/use-type-selector";
+import { useCumulativeCode } from "../hooks/use-cumulative-code";
 
 // interface CodeCellProps {
 //   cell: Cell
@@ -49,26 +50,31 @@ const CodeCell: React.FC<ResizableProps> = ({ cell, children }) => {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(window.innerWidth * 0.7);
   const [height, setHeight] = useState(window.innerHeight * 0.2);
+
+  const {updateCell, createBundle} = useActions();
+  const bundle = usedTypedSelector((state) => state.bundles[cell.id]);
+  const cumulativeCode = useCumulativeCode(cell.id);
   
-  const [code, setCode] = useState('');
-  const [err, setErr] = useState('');
-  const {updateCell} = useActions();
 
   useEffect(() => {
+    if (!bundle) {
+      createBundle(cell.id, cumulativeCode);
+      return;
+    }
+
     const timer = setTimeout(async () => {
-      const output = await bundle(cell.content);
-      setCode(output.code);
-      setErr(output.err);
-    }, 1000);
+      createBundle(cell.id, cumulativeCode)
+    }, 750);
 
     return () => {
       clearTimeout(timer);
     }
-  }, [cell.content]);
+    // eslint-disable-nex-line react-hooks/exhaustive-deps
+  }, [cell.id, cumulativeCode, createBundle]);
 
   const resizableProps_horizontal: ResizableProperties = {
     className: 'resize-horizontal',
-    maxWidth: innerWidth * 0.975,
+    maxWidth: innerWidth,
     maxHeight: Infinity,
     size: {
       height,
@@ -88,7 +94,7 @@ const CodeCell: React.FC<ResizableProps> = ({ cell, children }) => {
     minHeight: 25,
     size: {
       height,
-      width: innerWidth - 45
+      width: '100%'
       },
     onResize: (event, direction, refToElement, delta) => {
       setHeight(refToElement.offsetHeight);
@@ -128,7 +134,19 @@ const CodeCell: React.FC<ResizableProps> = ({ cell, children }) => {
                 onChange={(value) => updateCell(cell.id, value)}/>
 
     </Resizable>
-    <Preview code={code} err={err} />
+    <div className="progress-wrapper">
+    {
+      !bundle || bundle.loading
+      ? (
+          <div className="progress-cover">
+            <progress className="progress is-small is-primary" max="100">
+              Loading
+            </progress>
+          </div>
+      ) : (
+      <Preview code={bundle.code} err={bundle.err} />
+    )}
+    </div>
   </Resizable>
   );
 

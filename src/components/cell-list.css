@@ -1,0 +1,24 @@
+.cell-list {
+  margin: 0 25px 50vh;
+}
+
+.react-draggable-transparent-selection .cell-list {
+  margin-bottom: 100vh;
+
+}
+
+.cell-list-item .action-bar-wrapper {
+  position: absolute;
+  top: 30px !important;
+  height: 30px;
+  width: 100%;
+  top: 0;
+  right: 0;
+  transition: top 0.5s;
+  display: flex;
+  justify-content: center;
+}
+
+.cell-list-item:hover .action-bar-wrapper {
+  top: -40px !important;
+}

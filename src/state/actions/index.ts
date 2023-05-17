@@ -45,7 +45,7 @@ export interface BundleCompleteAction {
     cellId: string;
     bundle: {
       code: string;
-      error: string;
+      err: string;
     }
   }
 }
@@ -56,4 +56,4 @@ export type Action =
   | InsertCellAfterAction
   | UpdateCellAction
   | BundleStartAction
-  | BundleStartAction;
+  | BundleCompleteAction;
