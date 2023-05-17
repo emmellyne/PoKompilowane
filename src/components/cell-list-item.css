@@ -4,12 +4,10 @@
 
 .cell-list-item:hover {
   position: relative;
-  border: 1px solid #FAF9F6 !important;
 }
 
 .cell-list-item:focus {
   position: relative;
-  border: 1px solid #FAF9F6 !important;
 }
 
 

@@ -31,6 +31,17 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+.progress {
+  color: #A1E5AB;
+}
+
+.progress.is-primary:indeterminate {
+  background-image: linear-gradient(to right,#A1E5AB 30%,#202124 30%);
+}
+
+.progress:indeterminate {
+  background-color: #202124;
+}
 
 .progress-wrapper {
   height: 100%;
