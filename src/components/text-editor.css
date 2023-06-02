@@ -70,4 +70,5 @@
 .card {
   background-color: #202124;
   border-width: 0;
+  border-radius: 0;
 }

@@ -9,7 +9,7 @@
 
 .cell-list-item .action-bar-wrapper {
   position: absolute;
-  top: 30px !important;
+  top: 0px !important;
   height: 30px;
   width: 100%;
   top: 0;
@@ -21,4 +21,8 @@
 
 .cell-list-item:hover .action-bar-wrapper {
   top: -40px !important;
+}
+
+.cell-list-item:hover {
+  border: 1px solid #FAF9F6;
 }
